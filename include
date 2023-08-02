@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+class A
+{
+public :
+	A(int a)
+	{
+		_a = a;//
+	}
+private:
+	int& _a;
+};
+int main()
+{
+	int tmp = 2;
+	A a(tmp);
+	return 0;
+}
