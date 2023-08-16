@@ -1,0 +1,33 @@
+public static void main(String[] args) {
+    Object o = new Object();
+    Thread thread = new Thread(() -> {
+        synchronized (o) {
+            System.out.println( + LocalDateTime.now() ++ Thread.currentThread().getName());
+            try {
+ 
+                //wait 
+                o.wait(2000);
+ 
+                //sleep 
+                //Thread.sleep(2000);
+                System.out.println( + LocalDateTime.now() +  + Thread.currentThread().getName());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    });
+ 
+    thread.start();
+ 
+    try {
+        Thread.sleep(100);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+ 
+    System.out.println(LocalDateTime.now() +  Thread.currentThread().getName());
+ 
+    synchronized (o){
+        System.out.println( LocalDateTime.now() + + Thread.currentThread().getName());
+    }
+}
