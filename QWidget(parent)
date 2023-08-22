@@ -1,0 +1,20 @@
+#include "finddialog.h"
+#include <string>
+ 
+using namespace std;
+ 
+string my_title
+ 
+Finddialog::Finddialog(QWidget *parent)
+    : QWidget(parent)
+{
+    ui->setupUi(this);
+
+    setWindowTitle(QString::fromStdString(my_title));
+    setFixedSize(1080, 720);
+}
+ 
+Finddialog::~Finddialog()
+{
+    delete ui;
+}
